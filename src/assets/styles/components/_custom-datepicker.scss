@@ -1,0 +1,131 @@
+@use "@/assets/styles/base/variables" as *;
+@use "@/assets/styles/base/mixins" as *;
+
+.datepicker-wrapper {
+  .datepicker-open {
+    .react-datepicker__input-container::after {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+  .react-datepicker {
+    max-width: 384px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid $grey;
+    font-family: "Lato", sans-serif;
+    &__input-container {
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 24px;
+        width: 24px;
+        height: 24px;
+        background-image: url("/icons/dropdown.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        transform: translateY(-50%);
+        pointer-events: none;
+        transition: transform 0.2s ease;
+      }
+      input {
+        max-width: 190px;
+        padding: 13px 50px 13px 24px;
+        border: 1px solid $grey;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: 600;
+        font-family: "Lato", sans-serif;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        caret-color: transparent;
+        &:hover,
+        &:focus {
+          border: 1px solid $electric;
+          color: $electric;
+          outline: none;
+          span {
+            color: $electric;
+          }
+        }
+      }
+    }
+    &-popper {
+      max-width: 384px;
+      width: 100%;
+    }
+    &__navigation,
+    &__current-month {
+      display: none;
+    }
+    &__header {
+      background-color: $white;
+      border-bottom: none;
+      padding: 0;
+      &__dropdown {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    &__month-container {
+      width: 100%;
+    }
+
+    &__day-names {
+      margin: 0 0 12px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
+      text-transform: capitalize;
+      font-weight: 600;
+      line-height: 20px;
+    }
+    &__day-name {
+      margin: 0;
+      color: $grey;
+    }
+    &__month {
+      margin: 0;
+      text-align: unset;
+    }
+    &__week {
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
+      &:not(:last-of-type) {
+        margin-bottom: 12px;
+      }
+    }
+    &__day {
+      width: 30px;
+      margin: 0;
+      color: $purple;
+      font-weight: 600;
+      line-height: 28px;
+      transition: all 0.2s ease;
+      &:not([aria-disabled="true"]):hover {
+        background-color: $electric;
+        color: $white;
+      }
+      &--disabled {
+        color: $grey;
+      }
+
+      &--selected {
+        background-color: $electric;
+        color: $white;
+      }
+    }
+  }
+}
+
+@include mobile {
+  .datepicker-wrapper {
+    .react-datepicker {
+      padding: 20px;
+    }
+  }
+}

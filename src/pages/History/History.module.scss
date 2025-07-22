@@ -1,0 +1,24 @@
+@use "@/assets/styles/base/variables" as *;
+@use "@/assets/styles/base/mixins" as *;
+
+.sectionWrapper {
+  padding-bottom: 50px;
+}
+.actionsWrapper {
+  max-width: 700px;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+}
+
+@include mobile {
+  .actionsWrapper {
+    max-width: 375px;
+    margin: 0 auto;
+    padding: 30px 0;
+    flex-direction: column;
+    gap: 20px;
+  }
+}

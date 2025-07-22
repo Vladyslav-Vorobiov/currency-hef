@@ -1,0 +1,15 @@
+@use "@/assets/styles/base/mixins" as *;
+
+.header {
+  padding: 10px 20px;
+}
+
+.logo {
+  margin: 0 auto;
+}
+
+@include mobile {
+  .header {
+    padding: 30px 20px;
+  }
+}

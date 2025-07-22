@@ -1,0 +1,22 @@
+@use "@/assets/styles/base/variables" as *;
+
+body,
+p,
+a,
+span,
+ul,
+li {
+  color: $dark-purple;
+  font-family: "Lato", sans-serif;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 130px;
+
+  @media (max-width: 1024px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

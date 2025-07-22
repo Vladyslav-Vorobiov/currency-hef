@@ -1,0 +1,65 @@
+@use "@/assets/styles/base/variables" as *;
+@use "@/assets/styles/base/mixins" as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid $grey;
+  box-shadow: 0px 0px 20px rgba(33, 13, 74, 0.1);
+}
+
+.row {
+  padding: 26px 30px;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  &:first-of-type {
+    background-color: rgba($electric, 0.05);
+    color: $electric;
+    border-bottom: 1px solid $grey;
+  }
+  &:last-of-type {
+    background-color: rgba($purple, 0.05);
+    color: $purple;
+  }
+}
+
+.label,
+.value {
+  flex: 1 1 200px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  &:last-of-type {
+    padding-left: 120px;
+  }
+}
+
+@include mobile {
+  .card {
+    flex-direction: row;
+  }
+
+  .row {
+    padding: 20px;
+    flex-direction: column;
+    gap: 20px;
+    &:first-of-type {
+      max-width: 146px;
+      border-bottom: none;
+    }
+  }
+
+  .label,
+  .value {
+    flex: 1 1 auto;
+    font-size: 16px;
+    line-height: 20px;
+    &:last-of-type {
+      padding: 0px;
+    }
+  }
+}

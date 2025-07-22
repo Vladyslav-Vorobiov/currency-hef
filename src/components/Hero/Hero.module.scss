@@ -1,0 +1,35 @@
+@use "@/assets/styles/base/variables" as *;
+@use "@/assets/styles/base/mixins" as *;
+
+.heroWrapper {
+  padding: 20px 0 76px;
+  background-color: $dark-purple;
+}
+
+.pretitle {
+  margin-bottom: 40px;
+  font-size: 12px;
+  line-height: 20px;
+  color: $grey;
+}
+
+.title {
+  color: $white;
+  font-size: 60px;
+  text-transform: uppercase;
+  line-height: 120%;
+  letter-spacing: 0.6px;
+  font-family: "Oswald", sans-serif;
+}
+
+@include mobile {
+  .heroWrapper {
+    padding: 20px 0 30px;
+  }
+  .title {
+    font-size: 36px;
+  }
+  .pretitle {
+    margin-bottom: 128px;
+  }
+}

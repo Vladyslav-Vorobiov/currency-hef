@@ -1,0 +1,48 @@
+@use "@/assets/styles/base/variables" as *;
+@use "@/assets/styles/base/mixins" as *;
+
+.sectionWrapper {
+  padding-bottom: 50px;
+}
+
+.actionsWrapper {
+  max-width: 700px;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+}
+
+.historyLink {
+  padding: 15px 24px;
+  border: 1px solid $grey;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: $white;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  &:hover {
+    border: 1px solid $electric;
+    color: $electric;
+  }
+}
+
+.subtitle {
+  margin-bottom: 22px;
+  font-size: 20px;
+  line-height: 30px;
+  text-transform: uppercase;
+}
+
+@include mobile {
+  .actionsWrapper {
+    gap: 20px;
+  }
+  .historyLink {
+    padding: 11px 16px;
+  }
+}
