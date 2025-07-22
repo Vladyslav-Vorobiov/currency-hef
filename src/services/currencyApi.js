@@ -29,6 +29,5 @@ export const fetchDailyRates = async (date, currency) => {
 
   const data = await response.json();
 
-  console.log(data[0]);
   return data[0];
 };
