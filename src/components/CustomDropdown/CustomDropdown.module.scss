@@ -67,3 +67,9 @@
     color: $white;
   }
 }
+
+@include mobile {
+  .toggle {
+    padding: 8px 16px;
+  }
+}
