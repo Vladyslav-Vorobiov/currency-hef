@@ -5,19 +5,6 @@ import styles from "./DailyRatesTable.module.scss";
 
 const TIMES = ["00:00", "06:00", "12:00", "18:00"];
 
-const RatesRows = memo(({ rates }) => {
-  return (
-    <tbody>
-      {TIMES.map((time) => (
-        <tr key={time}>
-          <td>{time}</td>
-          <td>{rates[time]?.["1"]?.course || "—"}</td>
-        </tr>
-      ))}
-    </tbody>
-  );
-});
-
 export default function DailyRatesTable({ currency, selectedDate }) {
   const [rates, setRates] = useState({});
   const [loading, setLoading] = useState(false);
@@ -42,27 +29,15 @@ export default function DailyRatesTable({ currency, selectedDate }) {
     loadRates();
   }, [selectedDate, currency]);
 
+  const roundedRates = TIMES.map((time) => {
+    const rate = rates[time]?.["1"]?.course;
+    return rate ? Number(rate).toFixed(2) : "—";
+  });
+
   return (
-    // <div>
-    //   {error && <p style={{ color: "red" }}>{error}</p>}
-
-    //   <div className={styles.tableWrapper}>
-    //     <table className={styles.table}>
-    //       <thead>
-    //         <tr>
-    //           <th>Время</th>
-    //           <th>Курс</th>
-    //         </tr>
-    //       </thead>
-    //       <RatesRows rates={rates} />
-    //     </table>
-    //   </div>
-    // </div>
-
     <div>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <div className={styles.wrapper}>
-        {/* Заголовок с временем */}
         <div className={styles.row}>
           <div className={styles.headerCell}>Время</div>
           {TIMES.map((time) => (
@@ -72,12 +47,11 @@ export default function DailyRatesTable({ currency, selectedDate }) {
           ))}
         </div>
 
-        {/* Ряд с курсами */}
         <div className={styles.row}>
           <div className={styles.headerCell}>Курс</div>
-          {TIMES.map((time) => (
-            <div key={time} className={styles.cell}>
-              {rates[time]?.["1"]?.course ?? "—"}
+          {roundedRates.map((value, i) => (
+            <div key={TIMES[i]} className={styles.cell}>
+              {value}
             </div>
           ))}
         </div>

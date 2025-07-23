@@ -10,6 +10,7 @@ export default function Home() {
   const [currency, setCurrency] = useState("USD");
   const [rateData, setRateData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [gmtTime, setGmtTime] = useState("");
 
   useEffect(() => {
     const loadRate = async () => {
@@ -27,6 +28,21 @@ export default function Home() {
     loadRate();
   }, [currency]);
 
+  useEffect(() => {
+    const updateTime = () => {
+      const timeString = new Date().toLocaleTimeString("ru-RU", {
+        timeZone: "UTC",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+      setGmtTime(timeString);
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 60 * 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   const todayGmtDate = new Date().toLocaleDateString("ru-RU", {
     timeZone: "UTC",
     day: "2-digit",
@@ -34,13 +50,15 @@ export default function Home() {
     year: "numeric",
   });
 
+  const roundedRate = Number(rateData).toFixed(2);
+
   return (
     <>
       <Hero
         pretitle="База данных по курсам валют"
         title={
           <>
-            Актуальный курс валют <br /> на дату {todayGmtDate} (GMT+0)
+            Актуальный курс валют <br /> на {todayGmtDate} ({gmtTime}, GMT+0)
           </>
         }
       ></Hero>
@@ -61,7 +79,7 @@ export default function Home() {
           <div style={{ marginTop: "1rem" }}>
             <CurrencyCard
               currency={currency === "USD" ? "RUB" : "KGS"}
-              rate={rateData}
+              rate={rateData ? roundedRate : null}
             />
           </div>
         </section>
