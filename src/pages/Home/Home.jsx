@@ -56,9 +56,10 @@ export default function Home() {
     <>
       <Hero
         pretitle="База данных по курсам валют"
-        title={
+        title="Актуальный курс валют"
+        subtitle={
           <>
-            Актуальный курс валют <br /> на {todayGmtDate} ({gmtTime}, GMT+0)
+            {todayGmtDate} ({gmtTime}, GMT+0)
           </>
         }
       ></Hero>
