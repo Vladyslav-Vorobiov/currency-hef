@@ -14,11 +14,8 @@ export default function History() {
     <>
       <Hero
         pretitle="База данных по курсам валют"
-        title={
-          <>
-            Архив <br /> курсов валют
-          </>
-        }
+        title="Архив  курсов валют"
+        subtitle="по часовому поясу (GMT+0)"
       />
       <div className="container">
         <section className={styles.sectionWrapper}>
