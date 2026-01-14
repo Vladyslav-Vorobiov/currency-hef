@@ -4,7 +4,10 @@
 .heroWrapper {
   height: 300px;
   padding: 20px 0 80px;
-  background-color: $dark-purple;
+  background-image: url("/images/hero.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .pretitle {
@@ -36,6 +39,7 @@
 @include mobile {
   .heroWrapper {
     padding: 20px 0 30px;
+    background-image: url("/images/hero-mob.png");
   }
   .title {
     font-size: 36px;
